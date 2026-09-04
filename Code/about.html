@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="آشنایی با عرفان زریبافان، مربی کسب‌وکار و توسعه فردی؛ تحصیلات، حوزه فعالیت و علاقه‌مندی‌ها."
+    />
+    <title>درباره ما | Zaribafan</title>
+    <link rel="stylesheet" href="/Code/about.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="logo">Zaribafan</div>
+        <nav class="nav">
+          <a href="/Code/index.html">خانه</a>
+          <a href="#">مقالات</a>
+          <a href="/Code/reserve.html">رزرو جلسه</a>
+          <a href="/Code/education.html">آموزش‌ها</a>
+          <a href="#">ارتباط با ما</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="about">
+      <section class="about-hero">
+        <div class="container about-hero__inner">
+          <figure class="about-hero__photo">
+            <img
+              src="/Assets/image/979939cbc2074ad889f49f688431bde7.jpg"
+              alt="عرفان زریبافان"
+            />
+          </figure>
+
+          <div class="about-hero__content">
+            <h1>عرفان زریبافان</h1>
+            <p class="about-hero__role">مربی کسب‌وکار و توسعه فردی</p>
+            <p class="about-hero__desc">
+              با پیشینه‌ای در مهندسی و مدیریت کسب‌وکار، در کنار افراد و
+              کسب‌وکارها می‌مانم تا مسیر رشدشان روشن‌تر و تصمیم‌هاشان
+              آگاهانه‌تر شود.
+            </p>
+            <a href="/Code/reserve.html" class="about-hero__cta">رزرو جلسه با من</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="about-details container">
+        <div class="about-block" data-reveal>
+          <h2>تحصیلات و مدارک</h2>
+          <ul class="chip-list">
+            <li class="chip">کارشناسی ارشد مهندسی نفت</li>
+            <li class="chip">MBA نفت</li>
+            <li class="chip">مدرک بیزینس کوچینگ – دانشگاه تهران</li>
+          </ul>
+        </div>
+
+        <div class="about-block" data-reveal>
+          <h2>حوزه فعالیت</h2>
+          <p>
+            فعالیت من حول توسعه کسب‌وکار، بازاریابی، راه‌اندازی و ارتقای
+            کسب‌وکار و تحلیل کسب‌وکار شکل گرفته است.
+          </p>
+          <ul class="chip-list chip-list--accent">
+            <li class="chip">توسعه کسب‌وکار</li>
+            <li class="chip">بازاریابی</li>
+            <li class="chip">راه‌اندازی کسب‌وکار</li>
+            <li class="chip">ارتقای کسب‌وکار</li>
+            <li class="chip">تحلیل کسب‌وکار</li>
+          </ul>
+        </div>
+
+        <div class="about-block" data-reveal>
+          <h2>حوزه علاقه‌مندی</h2>
+          <ul class="chip-list chip-list--ghost">
+            <li class="chip">رشد فردی</li>
+            <li class="chip">گیمیفیکیشن</li>
+            <li class="chip">انرژی</li>
+            <li class="chip">استراتژی</li>
+            <li class="chip">تامین مالی</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="about-cta container" data-reveal>
+        <div class="about-cta__box">
+          <h2>آماده شروع مسیر رشد هستید؟</h2>
+          <p>
+            در یک جلسه کوتاه، اهداف‌تان را با هم مرور می‌کنیم و مسیر مناسب
+            را پیدا می‌کنیم.
+          </p>
+          <a
+            href="/Code/reserve.html"
+            class="about-hero__cta about-hero__cta--outline"
+            >رزرو جلسه</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p id="clock"></p>
+      <p id="date"></p>
+      <div class="container footer-grid">
+        <div class="social">
+          <a href="#"
+            ><img src="/Assets/image/linkedin-logo-6.png" alt="لینکدین"
+          /></a>
+          <a href="#"
+            ><img src="/Assets/image/telegram-logo.png" alt="تلگرام"
+          /></a>
+          <a href="#"
+            ><img src="/Assets/image/instagram-logo.jpg" alt="اینستاگرام"
+          /></a>
+        </div>
+
+        <div>
+          <h3>لینک‌های مفید</h3>
+          <ul class="links">
+            <li>
+              <a href="http://bciut.ir/" target="_blank"
+                >مؤسسه مربیگری دانشگاه تهران</a
+              >
+            </li>
+            <li><a href="#" target="_blank">فدراسیون بین‌المللی مربیگری</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="copyright">© تمامی حقوق محفوظ است</p>
+    </footer>
+
+    <script>
+      const updateclock = () => {
+        const now = new Date().toLocaleTimeString();
+        const day_now = new Date().toLocaleDateString();
+        document.getElementById("clock").textContent = now;
+        document.getElementById("date").textContent = day_now;
+      };
+      updateclock();
+      setInterval(updateclock, 1000);
+
+      const revealEls = document.querySelectorAll("[data-reveal]");
+      if ("IntersectionObserver" in window && revealEls.length) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("is-visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          { threshold: 0.15 }
+        );
+        revealEls.forEach((el) => observer.observe(el));
+      } else {
+        revealEls.forEach((el) => el.classList.add("is-visible"));
+      }
+    </script>
+  </body>
+</html>

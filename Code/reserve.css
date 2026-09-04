@@ -1,0 +1,166 @@
+@font-face {
+  font-family: Vaziri;
+  src: url("/Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.woff");
+  src: url("/Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.ttf");
+}
+@font-face {
+  font-family: Shabnam;
+  src: url("/Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.woff");
+  src: url("/Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.ttf");
+}
+@font-face {
+  font-family: Yekan;
+  src: url("/Assets/fontFarsi/font/yekan-font/yekan-regular.woff");
+  src: url("/Assets/fontFarsi/font/yekan-font/yekan-regular.ttf");
+}
+@font-face {
+  font-family: Tanha;
+  src: url("/Assets/fontFarsi/font/tanha-font-v0.9/Tanha.woff");
+  src: url("/Assets/fontFarsi/font/tanha-font-v0.9/Tanha.ttf");
+}
+@font-face {
+  font-family: Parasto;
+  src: url("/Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo-Bold.woff");
+  src: url("/Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.8;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.header {
+  background: #0f172a;
+  padding: 15px 0;
+}
+
+.logo {
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav a {
+  color: #e5e7eb;
+  margin-right: 20px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: Parasto;
+}
+
+.nav a:hover {
+  color: #38bdf8;
+}
+
+.reserve-section {
+  padding: 80px 0;
+}
+
+.reserve-title {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 40px;
+  color: #0f172a;
+  font-family: Parasto;
+}
+
+.reserve-form {
+  max-width: 600px;
+  margin: auto;
+  background: #ffffff;
+  padding: 40px;
+  border-radius: 18px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-family: Vaziri;
+}
+
+.form-group input,
+.form-group select {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #cbd5f5;
+  font-size: 14px;
+}
+
+.form-group small {
+  margin-top: 6px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+.reserve-form button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #2563eb;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.reserve-form button:hover {
+  background: #1d4ed8;
+}
+
+
+.footer {
+  background: #0f172a;
+  color: #cbd5f5;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.social img {
+  width: 75px;
+  margin: 15px;
+  border-radius: 100px;
+  transition: transform 0.4s;
+}
+
+.social img:hover {
+  transform: scale(1.2) rotate(15deg);
+}
+
+.links {
+  list-style: none;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: darkgoldenrod;
+}

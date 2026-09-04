@@ -1,0 +1,198 @@
+@font-face {
+  font-family: Vaziri;
+  src: url("/Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.woff");
+  src: url("/Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.ttf");
+}
+@font-face {
+  font-family: Shabnam;
+  src: url("/Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.woff");
+  src: url("/Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.ttf");
+}
+@font-face {
+  font-family: Yekan;
+  src: url("/Assets/fontFarsi/font/yekan-font/yekan-regular.woff");
+  src: url("/Assets/fontFarsi/font/yekan-font/yekan-regular.ttf");
+}
+@font-face {
+  font-family: Tanha;
+  src: url("/Assets/fontFarsi/font/tanha-font-v0.9/Tanha.woff");
+  src: url("/Assets/fontFarsi/font/tanha-font-v0.9/Tanha.ttf");
+}
+@font-face {
+  font-family: Parasto;
+  src: url("/Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo-Bold.woff");
+  src: url("/Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo.ttf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #f5f7fa;
+  color: #333;
+  line-height: 1.8;
+}
+
+.container {
+  width: 90%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.header {
+  background: #0f172a;
+  padding: 15px 0;
+}
+
+.logo {
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav a {
+  color: #e5e7eb;
+  margin-right: 20px;
+  text-decoration: none;
+  font-size: 15px;
+  font-family: Parasto;
+}
+
+.nav a:hover {
+  color: #38bdf8;
+}
+
+/* test */
+.page-title {
+  text-align: center;
+  margin: 60px 0 40px;
+  font-size: 28px;
+  font-family: Parasto;
+  color: #0f172a;
+}
+
+/* Grid */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+/* Card base */
+.card {
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Front & Back */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 16px;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+}
+
+/* Front */
+.card-front {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: #fff;
+}
+
+.card-front h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-family: Parasto;
+}
+
+.card-front p {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Back */
+.card-back {
+  background: #ffffff;
+  color: #0f172a;
+  transform: rotateY(180deg);
+  border: 2px #0f172a solid;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-back p {
+  font-size: 15px;
+  text-align: center;
+  font-family: Parasto;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer {
+background: #0f172a;
+  color: #cbd5f5;
+  text-align: center;
+  padding: 20px;
+  font-size: 14px;
+}
+
+.social img {
+  width: 75px;
+  margin: 15px;
+  border-radius: 100px;
+  transition: transform 0.4s;
+}
+
+.social img:hover {
+  transform: scale(1.2) rotate(15deg);
+}
+
+.links {
+  list-style: none;
+  margin-bottom: 40px;
+  margin-top: 20px;
+}
+
+.links a {
+  text-decoration: none;
+  color: darkgoldenrod;
+}
