@@ -3,13 +3,13 @@
 
 @font-face {
   font-family: Parasto;
-  src: url("/Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo-Bold.woff");
-  src: url("/Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo.ttf");
+  src: url("../Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo-Bold.woff");
+  src: url("../Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo.ttf");
 }
 @font-face {
   font-family: Vaziri;
-  src: url("/Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.woff");
-  src: url("/Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.ttf");
+  src: url("../Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.woff");
+  src: url("../Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.ttf");
 }
 
 :root {
