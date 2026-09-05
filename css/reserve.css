@@ -1,166 +1,399 @@
 @font-face {
   font-family: Vaziri;
-  src: url("../Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.woff");
-  src: url("../Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.ttf");
+  src: url("/Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.woff") format("woff"),
+       url("/Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: Shabnam;
-  src: url("../Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.woff");
-  src: url("../Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.ttf");
-}
-@font-face {
-  font-family: Yekan;
-  src: url("../Assets/fontFarsi/font/yekan-font/yekan-regular.woff");
-  src: url("../Assets/fontFarsi/font/yekan-font/yekan-regular.ttf");
-}
-@font-face {
-  font-family: Tanha;
-  src: url("../Assets/fontFarsi/font/tanha-font-v0.9/Tanha.woff");
-  src: url("../Assets/fontFarsi/font/tanha-font-v0.9/Tanha.ttf");
+  src: url("/Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.woff") format("woff"),
+       url("/Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.ttf") format("truetype");
 }
 @font-face {
   font-family: Parasto;
-  src: url("../Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo-Bold.woff");
-  src: url("../Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo.ttf");
+  src: url("/Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo-Bold.woff") format("woff"),
+       url("/Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo.ttf") format("truetype");
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
+/* ==========================================================================
+   Zaribafan — Reserve page
+   همون زبان بصری هوم‌پیج (ink / paper / gold / خط مسیرِ طراحی‌شده)، این‌بار
+   برای یک فرم دو مرحله‌ای. این فایل بعد از css/base.css لود می‌شه.
+   ========================================================================== */
+
+.reserve-split {
+  display: grid;
+  grid-template-columns: 42% 58%;
+  min-height: calc(100vh - 68px);
 }
 
-body {
-  background: #f5f7fa;
-  color: #333;
-  line-height: 1.8;
-}
+/* ---------- Intro panel ---------- */
 
-.container {
-  width: 90%;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.header {
-  background: #0f172a;
-  padding: 15px 0;
-}
-
-.logo {
-  color: #fff;
-  font-size: 22px;
-  font-weight: bold;
-}
-
-.header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nav a {
-  color: #e5e7eb;
-  margin-right: 20px;
-  text-decoration: none;
-  font-size: 15px;
-  font-family: Parasto;
-}
-
-.nav a:hover {
-  color: #38bdf8;
-}
-
-.reserve-section {
-  padding: 80px 0;
-}
-
-.reserve-title {
-  text-align: center;
-  font-size: 32px;
-  margin-bottom: 40px;
-  color: #0f172a;
-  font-family: Parasto;
-}
-
-.reserve-form {
-  max-width: 600px;
-  margin: auto;
-  background: #ffffff;
-  padding: 40px;
-  border-radius: 18px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-}
-
-.form-group {
+.reserve-intro {
+  background: radial-gradient(120% 140% at 85% 0%, var(--ink-900) 0%, var(--ink-950) 55%);
+  color: var(--text-on-dark-muted);
+  padding: 76px 60px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  justify-content: center;
+  gap: 26px;
+  position: relative;
+  overflow: hidden;
 }
 
-.form-group label {
-  margin-bottom: 8px;
-  font-size: 14px;
-  font-family: Vaziri;
-}
-
-.form-group input,
-.form-group select {
-  padding: 12px;
-  border-radius: 10px;
-  border: 1px solid #cbd5f5;
-  font-size: 14px;
-}
-
-.form-group small {
-  margin-top: 6px;
-  font-size: 12px;
-  color: #64748b;
-}
-
-.reserve-form button {
+.route-path {
+  position: absolute;
+  inset: 0;
   width: 100%;
-  padding: 14px;
-  border: none;
-  border-radius: 12px;
-  background: #2563eb;
+  height: 100%;
+  color: var(--gold-500);
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.route-path path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: route-draw 1.8s var(--ease) forwards;
+  animation-delay: 0.3s;
+}
+
+.route-path circle {
+  opacity: 0;
+  animation: route-dot-in 0.4s var(--ease) forwards;
+  animation-delay: 2s;
+}
+
+@keyframes route-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes route-dot-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .route-path path {
+    stroke-dashoffset: 0;
+    animation: none;
+  }
+  .route-path circle {
+    opacity: 1;
+    animation: none;
+  }
+}
+
+.reserve-intro h1 {
+  font-family: var(--font);
+  font-weight: 800;
   color: #fff;
-  font-size: 16px;
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.55;
+  position: relative;
+  z-index: 1;
+}
+
+.reserve-intro-text {
+  max-width: 38ch;
+  font-size: 0.98rem;
+  position: relative;
+  z-index: 1;
+}
+
+.reserve-trust {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.reserve-trust li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.92rem;
+  color: var(--text-on-dark-muted);
+}
+
+.reserve-trust svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+  color: var(--gold-400);
+}
+
+/* ---------- Form panel ---------- */
+
+.reserve-form-panel {
+  background: var(--paper);
+  padding: 76px 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.reserve-form-inner {
+  max-width: 440px;
+  width: 100%;
+}
+
+/* Step progress */
+
+.progress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 34px;
+}
+
+.progress-seg {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.progress-dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font);
+  font-size: 12.5px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  border: 1.5px solid var(--line);
+  flex-shrink: 0;
+  transition: background var(--dur-fast) var(--ease), border-color var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
+}
+
+.progress-label {
+  font-size: 13px;
+  color: var(--text-secondary);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.progress-bar {
+  flex: 1;
+  height: 1.5px;
+  background: var(--line);
+  transition: background var(--dur-med) var(--ease);
+}
+
+.progress-seg.active .progress-dot {
+  background: var(--ink-950);
+  border-color: var(--ink-950);
+  color: var(--gold-400);
+}
+
+.progress-seg.active .progress-label {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.progress-seg.done .progress-bar {
+  background: var(--gold-500);
+}
+
+/* Steps */
+
+.form-step {
+  display: none;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.form-step.active {
+  display: flex;
+}
+
+/* Underline-style fields — matches the site's editorial, no-card-chrome language */
+
+.field {
+  position: relative;
+}
+
+.field input,
+.field select {
+  width: 100%;
+  border: none;
+  border-bottom: 1.5px solid var(--line);
+  background: transparent;
+  padding: 14px 2px 10px;
+  font-size: 15px;
+  color: var(--text-primary);
+  font-family: inherit;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: var(--gold-500);
+}
+
+.field label {
+  position: absolute;
+  right: 2px;
+  top: 14px;
+  color: var(--text-secondary);
+  font-size: 14.5px;
+  pointer-events: none;
+  transition: var(--dur-fast) var(--ease);
+}
+
+.field input:focus + label,
+.field input:not(:placeholder-shown) + label {
+  top: -8px;
+  font-size: 12px;
+  color: var(--gold-600);
+}
+
+.field label.field-label-static {
+  position: static;
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.field .field-title {
+  display: block;
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.field small {
+  display: block;
+  margin-top: 7px;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+/* Time chips */
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.chip {
+  padding: 10px 20px;
+  border-radius: 999px;
+  border: 1.5px solid var(--line);
+  background: transparent;
+  font-size: 13.5px;
+  color: var(--text-primary);
+  font-family: inherit;
   cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease),
+    color var(--dur-fast) var(--ease);
 }
 
-.reserve-form button:hover {
-  background: #1d4ed8;
+.chip:hover {
+  border-color: var(--gold-500);
 }
 
+.chip.selected {
+  background: var(--gold-500);
+  border-color: var(--gold-500);
+  color: var(--ink-950);
+  font-weight: 700;
+}
 
-.footer {
-  background: #0f172a;
-  color: #cbd5f5;
+.form-btn-row {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.form-btn-row .btn,
+.form-btn-row .btn-outline {
+  flex: 1;
   text-align: center;
-  padding: 20px;
+  border: none;
+}
+
+.form-btn-row .btn-outline {
+  border: 1.5px solid var(--line);
+}
+
+/* Confirmation state */
+
+.confirm {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 14px;
+  padding: 10px 0;
+}
+
+.confirm.active {
+  display: flex;
+}
+
+.confirm-check {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.confirm h3 {
+  font-family: var(--font);
+  font-weight: 700;
+  font-size: 19px;
+  color: var(--text-primary);
+}
+
+.confirm p {
+  color: var(--text-secondary);
   font-size: 14px;
+  max-width: 32ch;
 }
 
-.social img {
-  width: 75px;
-  margin: 15px;
-  border-radius: 100px;
-  transition: transform 0.4s;
-}
-
-.social img:hover {
-  transform: scale(1.2) rotate(15deg);
-}
-
-.links {
-  list-style: none;
-  margin-bottom: 40px;
-  margin-top: 20px;
-}
-
-.links a {
+.confirm a {
+  color: var(--sage-500);
+  font-weight: 700;
+  font-size: 13.5px;
   text-decoration: none;
-  color: darkgoldenrod;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.confirm a:hover {
+  border-color: var(--sage-500);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .reserve-split {
+    grid-template-columns: 1fr;
+  }
+  .reserve-intro {
+    padding: 56px 28px;
+  }
+  .reserve-form-panel {
+    padding: 48px 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-btn-row {
+    flex-direction: column-reverse;
+  }
 }

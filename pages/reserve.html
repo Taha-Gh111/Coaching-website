@@ -2,92 +2,227 @@
 <html lang="fa" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0E1A" />
     <title>رزرو جلسه | Zaribafan</title>
+    <meta
+      name="description"
+      content="یک جلسه‌ی ۴۵ دقیقه‌ای کوچینگ رزرو کنید؛ فقط چند اطلاعات ساده و انتخاب زمان مناسب شما."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/base.css" />
     <link rel="stylesheet" href="../css/reserve.css" />
   </head>
   <body>
+    <a href="#main" class="skip-link">رفتن به محتوای اصلی</a>
 
-    <header class="header">
-      <div class="container">
-        <div class="logo">Zaribafan</div>
-        <nav class="nav">
+    <header class="header" id="site-header">
+      <div class="container header-inner">
+        <a href="../index.html" class="logo" aria-label="Zaribafan – صفحه اصلی">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <rect x="1" y="1" width="30" height="30" rx="7" stroke="currentColor" stroke-width="1.4" />
+              <path d="M9 21 L16 10 L23 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="16" cy="10" r="1.6" fill="currentColor" />
+            </svg>
+          </span>
+          <span class="logo-word">Zaribafan</span>
+        </a>
+
+        <nav class="nav" id="primary-nav" aria-label="ناوبری اصلی">
           <a href="../index.html">خانه</a>
           <a href="#">مقالات</a>
-          <a href="pages/about.html">درباره ما</a>
-          <a href="pages/education.html">آموزش‌ها</a>
+          <a href="about.html">درباره ما</a>
+          <a href="education.html">آموزش‌ها</a>
           <a href="#">ارتباط با ما</a>
         </nav>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="باز کردن منو"
+        >
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+        </button>
       </div>
     </header>
 
-    <!-- فقط این بخش اضافه شده -->
-    <main class="reserve-section">
-      <div class="container">
-        <h1 class="reserve-title">رزرو جلسه کوچینگ</h1>
-
-        <form class="reserve-form">
-          <div class="form-group">
-            <label>نام</label>
-            <input type="text" required />
-          </div>
-
-          <div class="form-group">
-            <label>نام خانوادگی</label>
-            <input type="text" required />
-          </div>
-
-          <div class="form-group">
-            <label>شماره تماس</label>
-            <input type="tel" required />
-          </div>
-
-          <div class="form-group">
-            <label>ایمیل</label>
-            <input type="email" />
-          </div>
-
-          <div class="form-group">
-            <label>انتخاب روز جلسه</label>
-            <input type="date" id="datePicker" required />
-            <small>شنبه و چهارشنبه قابل رزرو نیستند</small>
-          </div>
-
-          <div class="form-group">
-            <label>انتخاب ساعت</label>
-            <select required>
-              <option value="">انتخاب کنید</option>
-              <option>10:00 - 11:00</option>
-              <option>12:00 - 13:00</option>
-              <option>15:00 - 16:00</option>
-              <option>17:00 - 18:00</option>
-            </select>
-          </div>
-
-          <button type="submit">ثبت رزرو</button>
-        </form>
+    <!-- MOBILE NAV OVERLAY -->
+    <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="منوی ناوبری">
+      <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+      <div class="mobile-nav-panel">
+        <div class="mobile-nav-top">
+          <span class="logo-word">Zaribafan</span>
+          <button type="button" class="mobile-nav-close" id="mobile-nav-close" aria-label="بستن منو">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+          </button>
+        </div>
+        <nav class="mobile-nav-links" aria-label="ناوبری موبایل">
+          <a href="../index.html" style="--i:0">خانه</a>
+          <a href="#" style="--i:1">مقالات</a>
+          <a href="about.html" style="--i:2">درباره ما</a>
+          <a href="education.html" style="--i:3">آموزش‌ها</a>
+          <a href="#" style="--i:4">ارتباط با ما</a>
+        </nav>
       </div>
+    </div>
+
+    <main id="main">
+      <section class="reserve-split">
+        <div class="reserve-intro">
+          <svg class="route-path" viewBox="0 0 420 640" fill="none" aria-hidden="true" preserveAspectRatio="none">
+            <path d="M -30 600 C 110 560, 90 420, 200 370 S 380 160, 450 40" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" pathLength="1" />
+            <circle cx="450" cy="40" r="4.5" fill="currentColor" />
+          </svg>
+
+          <h1 class="reveal-in" style="--d:0">
+            یک جلسه‌ی ۴۵ دقیقه‌ای<br />می‌تواند مسیر شما را روشن کند
+          </h1>
+          <p class="reserve-intro-text reveal-in" style="--d:1">
+            قبل از جلسه چیزی از شما خواسته نمی‌شود جز صداقت. اطلاعات و زمان
+            مدنظرتان را وارد کنید تا هماهنگی نهایی برایتان پیامک شود.
+          </p>
+
+          <ul class="reserve-trust reveal-in" style="--d:2">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7" /></svg>
+              جلسه اول، رایگان و بدون تعهد است
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7" /></svg>
+              محرمانگی کامل مکالمات، همیشه
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 13l4 4L19 7" /></svg>
+              هماهنگی زمان ظرف کمتر از ۲۴ ساعت
+            </li>
+          </ul>
+        </div>
+
+        <div class="reserve-form-panel">
+          <div class="reserve-form-inner reveal-in" style="--d:3">
+
+            <div class="progress" id="progress">
+              <div class="progress-seg active" data-seg="1">
+                <span class="progress-dot">۱</span>
+                <span class="progress-label">اطلاعات تماس</span>
+              </div>
+              <div class="progress-bar"></div>
+              <div class="progress-seg" data-seg="2">
+                <span class="progress-dot">۲</span>
+                <span class="progress-label">زمان‌بندی</span>
+              </div>
+            </div>
+
+            <form id="reserveForm" novalidate>
+              <div class="form-step active" data-step="1">
+                <div class="field">
+                  <input type="text" id="fname" placeholder=" " required />
+                  <label for="fname">نام</label>
+                </div>
+                <div class="field">
+                  <input type="text" id="lname" placeholder=" " required />
+                  <label for="lname">نام خانوادگی</label>
+                </div>
+                <div class="field">
+                  <input type="tel" id="phone" placeholder=" " required />
+                  <label for="phone">شماره تماس</label>
+                </div>
+                <div class="field">
+                  <input type="email" id="email" placeholder=" " />
+                  <label for="email">ایمیل (اختیاری)</label>
+                </div>
+                <div class="form-btn-row">
+                  <button type="button" class="btn" id="toStep2">مرحله بعد</button>
+                </div>
+              </div>
+
+              <div class="form-step" data-step="2">
+                <div class="field">
+                  <input type="date" id="datePicker" placeholder=" " required />
+                  <label for="datePicker" class="field-label-static">انتخاب روز جلسه</label>
+                  <small>شنبه و چهارشنبه قابل رزرو نیستند</small>
+                </div>
+                <div class="field">
+                  <span class="field-title">انتخاب ساعت</span>
+                  <div class="chips" id="timeChips">
+                    <button type="button" class="chip">۱۰:۰۰ - ۱۱:۰۰</button>
+                    <button type="button" class="chip">۱۲:۰۰ - ۱۳:۰۰</button>
+                    <button type="button" class="chip">۱۵:۰۰ - ۱۶:۰۰</button>
+                    <button type="button" class="chip">۱۷:۰۰ - ۱۸:۰۰</button>
+                  </div>
+                </div>
+                <div class="form-btn-row">
+                  <button type="button" class="btn-outline" id="backStep1">قبلی</button>
+                  <button type="submit" class="btn">ثبت رزرو</button>
+                </div>
+              </div>
+            </form>
+
+            <div class="confirm" id="confirmBox">
+              <div class="confirm-check">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0A0E1A" stroke-width="2.8"><path d="M5 13l4 4L19 7" /></svg>
+              </div>
+              <h3>درخواست شما ثبت شد</h3>
+              <p>به‌زودی برای هماهنگی نهایی با شما تماس گرفته می‌شود.</p>
+              <a href="#" id="resetForm">ثبت یک درخواست دیگر</a>
+            </div>
+
+          </div>
+        </div>
+      </section>
     </main>
-    <!-- پایان بخش جدید -->
 
     <footer class="footer">
-      <p id="clock"></p>
-      <p id="date"></p>
-      <div class="social">
-        <a href="#"><img src="../Assets/image/linkedin-logo-6.png" alt="لینکدین"></a>
-        <a href="#"><img src="../Assets/image/telegram-logo.png" alt="تلگرام" /></a>
-        <a href="#"><img src="../Assets/image/instagram-logo.jpg" alt="اینستاگرام" /></a>
-      </div>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <span class="logo-word">Zaribafan</span>
+            <p class="local-time">
+              <span class="sr-only">زمان و تاریخ محلی</span>
+              <span id="clock" aria-hidden="true"></span>
+              <span id="date" aria-hidden="true"></span>
+            </p>
+          </div>
 
-      <h2>لینک‌های مفید</h2>
-      <ul class="links">
-        <li>
-          <a href="http://bciut.ir/" target="_blank">مؤسسه مربیگری دانشگاه تهران</a>
-        </li>
-        <li><a href="#" target="_blank">فدراسیون بین‌المللی مربیگری</a></li>
-      </ul>
-      <p>© تمامی حقوق محفوظ است</p>
+          <div class="social" aria-label="شبکه‌های اجتماعی">
+            <a href="#" aria-label="لینکدین">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="4.5" /><path d="M7.2 10v7M7.2 7.2v.01M11.5 17v-4.2c0-1.5 1-2.5 2.4-2.5s2.1 1 2.1 2.5V17" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <a href="#" aria-label="تلگرام">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 3 3 10.5l6 2m12-9.5-3.2 15L11 14m10-11L11 14m0 0-.8 5.8L13 15" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <a href="#" aria-label="اینستاگرام">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="6" /><circle cx="12" cy="12" r="4.3" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h2>لینک‌های مفید</h2>
+          <ul class="links">
+            <li>
+              <a href="http://bciut.ir/" target="_blank" rel="noopener">مؤسسه مربیگری دانشگاه تهران</a>
+            </li>
+            <li><a href="#" target="_blank" rel="noopener">فدراسیون بین‌المللی مربیگری</a></li>
+          </ul>
+        </div>
+
+        <p class="copyright">© تمامی حقوق محفوظ است</p>
+      </div>
     </footer>
 
+    <script src="../js/main.js"></script>
     <script src="../js/reserve.js"></script>
   </body>
 </html>

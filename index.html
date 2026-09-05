@@ -3,223 +3,270 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0A0E1A" />
     <title>کوچینگ حرفه‌ای | Zaribafan</title>
     <meta
       name="description"
       content="کوچینگ فردی، شغلی و سازمانی با رویکردی هدفمند برای رشد پایدار، وضوح ذهنی و تصمیم‌گیری بهتر."
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/base.css" />
     <link rel="stylesheet" href="css/index.css" />
   </head>
   <body>
+    <a href="#main" class="skip-link">رفتن به محتوای اصلی</a>
+
     <header class="header" id="site-header">
-      <div class="container">
-        <div class="logo">Zaribafan</div>
-        <nav class="nav">
+      <div class="container header-inner">
+        <a href="#" class="logo" aria-label="Zaribafan – صفحه اصلی">
+          <span class="logo-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32" fill="none">
+              <rect x="1" y="1" width="30" height="30" rx="7" stroke="currentColor" stroke-width="1.4" />
+              <path d="M9 21 L16 10 L23 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx="16" cy="10" r="1.6" fill="currentColor" />
+            </svg>
+          </span>
+          <span class="logo-word">Zaribafan</span>
+        </a>
+
+        <nav class="nav" id="primary-nav" aria-label="ناوبری اصلی">
           <a href="#">مقالات</a>
           <a href="pages/about.html">درباره ما</a>
           <a href="pages/education.html">آموزش‌ها</a>
           <a href="#">ارتباط با ما</a>
           <a href="pages/reserve.html" class="nav-cta">رزرو جلسه</a>
         </nav>
+
+        <button
+          type="button"
+          class="menu-toggle"
+          id="menu-toggle"
+          aria-expanded="false"
+          aria-controls="mobile-nav"
+          aria-label="باز کردن منو"
+        >
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+          <span class="menu-toggle-bar"></span>
+        </button>
       </div>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-content">
-          <h1>
-            رشد تصادفی نیست؛<br />
-            طراحی می‌شود
-          </h1>
-          <p class="hero-text">
-            با جلسات کوچینگ هدفمند، به وضوح ذهنی، تصمیم‌گیری بهتر و عملکرد
-            بالاتر برسید.
-          </p>
-          <div class="hero-actions">
-            <a href="pages/reserve.html" class="btn">رزرو جلسه مشاوره</a>
+    <!-- MOBILE NAV OVERLAY -->
+    <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="منوی ناوبری">
+      <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
+      <div class="mobile-nav-panel">
+        <div class="mobile-nav-top">
+          <span class="logo-word">Zaribafan</span>
+          <button type="button" class="mobile-nav-close" id="mobile-nav-close" aria-label="بستن منو">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+          </button>
+        </div>
+        <nav class="mobile-nav-links" aria-label="ناوبری موبایل">
+          <a href="#" style="--i:0">مقالات</a>
+          <a href="pages/about.html" style="--i:1">درباره ما</a>
+          <a href="pages/education.html" style="--i:2">آموزش‌ها</a>
+          <a href="#" style="--i:3">ارتباط با ما</a>
+        </nav>
+        <a href="pages/reserve.html" class="btn mobile-nav-cta" style="--i:4">رزرو جلسه مشاوره</a>
+      </div>
+    </div>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <h1 class="reveal-in" style="--d:0">
+              رشد تصادفی نیست؛<br />
+              طراحی می‌شود
+            </h1>
+            <p class="hero-text reveal-in" style="--d:1">
+              با جلسات کوچینگ هدفمند، به وضوح ذهنی، تصمیم‌گیری بهتر و عملکرد
+              بالاتر برسید.
+            </p>
+            <div class="hero-actions reveal-in" style="--d:2">
+              <a href="pages/reserve.html" class="btn">رزرو جلسه مشاوره</a>
+            </div>
+            <p class="hero-proof reveal-in" style="--d:3">
+              بیش از <strong>[XX]</strong> جلسه کوچینگ خصوصی و سازمانی برگزار شده
+              است
+            </p>
           </div>
-          <!-- PLACEHOLDER: عدد واقعی جلسات را جایگزین [XX] کنید -->
-          <p class="hero-proof">
-            بیش از <strong>[XX]</strong> جلسه کوچینگ خصوصی و سازمانی برگزار شده
-            است
-          </p>
-        </div>
-        <div class="hero-media">
-          <div class="hero-frame">
-            <img
-              src="Assets/image/979939cbc2074ad889f49f688431bde7.jpg"
-              alt="عرفان زریبافان، کوچ کسب‌وکار"
-            />
+          <div class="hero-media">
+            <div class="hero-frame">
+              <svg class="hero-path" viewBox="0 0 360 420" fill="none" aria-hidden="true" preserveAspectRatio="none">
+                <path d="M8 400 C 90 340, 70 240, 150 190 S 300 60, 352 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" pathLength="1" />
+                <circle cx="352" cy="20" r="4.5" fill="currentColor" />
+              </svg>
+              <div class="hero-photo">
+                <img
+                  src="Assets/image/979939cbc2074ad889f49f688431bde7.jpg"
+                  alt="عرفان زریبافان، کوچ کسب‌وکار"
+                  width="370"
+                  height="370"
+                />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <section class="services container">
-      <h2 class="section-title">خدمات کوچینگ</h2>
-      <div class="services-grid">
-        <article class="service">
-          <span class="service-icon" aria-hidden="true">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <circle cx="12" cy="8" r="3.4" />
-              <path d="M5 20c0-3.6 3.1-6.2 7-6.2s7 2.6 7 6.2" />
-            </svg>
-          </span>
-          <h3>کوچینگ فردی</h3>
-          <p>تمرکز روی اهداف شخصی، ذهنیت و رشد پایدار.</p>
-        </article>
+      <!-- SERVICES -->
+      <section class="services container">
+        <h2 class="section-title reveal-on-scroll">خدمات کوچینگ</h2>
+        <div class="services-grid reveal-on-scroll">
+          <article class="service">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <circle cx="12" cy="8" r="3.4" />
+                <path d="M5 20c0-3.6 3.1-6.2 7-6.2s7 2.6 7 6.2" />
+              </svg>
+            </span>
+            <h3>کوچینگ فردی</h3>
+            <p>تمرکز روی اهداف شخصی، ذهنیت و رشد پایدار.</p>
+          </article>
 
-        <article class="service">
-          <span class="service-icon" aria-hidden="true">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <path d="M4 19V9m6 10V5m6 14v-7" />
-              <path d="M3 19h18" />
-            </svg>
-          </span>
-          <h3>کوچینگ شغلی</h3>
-          <p>تصمیم‌گیری شغلی، ارتقای مسیر حرفه‌ای و عملکرد کاری.</p>
-        </article>
+          <article class="service">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M4 19V9m6 10V5m6 14v-7" />
+                <path d="M3 19h18" />
+              </svg>
+            </span>
+            <h3>کوچینگ شغلی</h3>
+            <p>تصمیم‌گیری شغلی، ارتقای مسیر حرفه‌ای و عملکرد کاری.</p>
+          </article>
 
-        <article class="service">
-          <span class="service-icon" aria-hidden="true">
-            <svg
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1.6"
-            >
-              <path
-                d="M4 6.5C4 5.7 4.7 5 5.5 5H12v14H5.5c-.8 0-1.5-.7-1.5-1.5z"
-              />
-              <path
-                d="M20 6.5c0-.8-.7-1.5-1.5-1.5H12v14h6.5c.8 0 1.5-.7 1.5-1.5z"
-              />
-            </svg>
-          </span>
-          <h3>دوره‌های آموزشی</h3>
-          <p>آموزش مهارت‌های کاربردی برای زندگی و کار.</p>
-          <a href="pages/education.html" class="service-link"
-            >مشاهده همه دوره‌ها</a
-          >
-        </article>
-      </div>
-    </section>
-
-    <!-- ABOUT TEASER -->
-    <section class="about-teaser">
-      <div class="container about-teaser-grid">
-        <div class="about-teaser-text">
-          <h2 class="section-title">درباره من</h2>
-          <p>
-            سال‌هاست در حوزه توسعه کسب‌وکار، بازاریابی و راه‌اندازی کسب‌وکار
-            فعالیت می‌کنم و مسیر کوچینگ را برای کمک به رشد فردی و سازمانی
-            مراجعانم انتخاب کرده‌ام.
-          </p>
-          <ul class="credentials">
-            <li>کارشناسی ارشد مهندسی نفت</li>
-            <li>MBA نفت</li>
-            <li>مدرک بیزینس کوچینگ – دانشگاه تهران</li>
-          </ul>
-          <a href="/pages/about.html" class="link-more">بیشتر درباره من</a>
+          <article class="service">
+            <span class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M4 6.5C4 5.7 4.7 5 5.5 5H12v14H5.5c-.8 0-1.5-.7-1.5-1.5z" />
+                <path d="M20 6.5c0-.8-.7-1.5-1.5-1.5H12v14h6.5c.8 0 1.5-.7 1.5-1.5z" />
+              </svg>
+            </span>
+            <h3>دوره‌های آموزشی</h3>
+            <p>آموزش مهارت‌های کاربردی برای زندگی و کار.</p>
+            <a href="pages/education.html" class="service-link">مشاهده همه دوره‌ها</a>
+          </article>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- PROCESS -->
-    <section class="process">
-      <div class="container">
-        <h2 class="section-title">مسیر همکاری</h2>
-        <ol class="process-list">
-          <li>
-            <span class="step-num">۱</span>
-            <div>
-              <h3>گفت‌وگوی آشنایی</h3>
-              <p>یک جلسه کوتاه و رایگان برای شناخت هدف‌ها و نیازهای شما.</p>
-            </div>
-          </li>
-          <li>
-            <span class="step-num">۲</span>
-            <div>
-              <h3>طراحی مسیر مشترک</h3>
-              <p>تدوین برنامه کوچینگ متناسب با شرایط و اهداف شما.</p>
-            </div>
-          </li>
-          <li>
-            <span class="step-num">۳</span>
-            <div>
-              <h3>همراهی و پیگیری</h3>
-              <p>جلسات منظم همراه با بازخورد و پیگیری پیشرفت.</p>
-            </div>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS + CERTIFICATIONS (placeholders) -->
-    <section class="testimonials">
-      <div class="container">
-        
-        <div class="cert-row">
-          <span class="cert-badge">[گواهی‌نامه]</span>
-          <span class="cert-badge">[گواهی‌نامه]</span>
-          <span class="cert-badge">[عضویت انجمن]</span>
+      <!-- ABOUT TEASER -->
+      <section class="about-teaser">
+        <div class="container about-teaser-grid">
+          <div class="about-teaser-text reveal-on-scroll">
+            <h2 class="section-title">درباره من</h2>
+            <p>
+              سال‌هاست در حوزه توسعه کسب‌وکار، بازاریابی و راه‌اندازی کسب‌وکار
+              فعالیت می‌کنم و مسیر کوچینگ را برای کمک به رشد فردی و سازمانی
+              مراجعانم انتخاب کرده‌ام.
+            </p>
+            <ul class="credentials">
+              <li>کارشناسی ارشد مهندسی نفت</li>
+              <li>MBA نفت</li>
+              <li>مدرک بیزینس کوچینگ – دانشگاه تهران</li>
+            </ul>
+            <a href="pages/about.html" class="link-more">بیشتر درباره من</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- FINAL CTA -->
-    <section class="cta-band">
-      <div class="container cta-band-inner">
-        <h2>آماده‌اید مسیر رشدتان را طراحی کنید؟</h2>
-        <a href="pages/reserve.html" class="btn btn-light">رزرو جلسه مشاوره</a>
-      </div>
-    </section>
+      <!-- PROCESS -->
+      <section class="process">
+        <div class="container">
+          <h2 class="section-title reveal-on-scroll">مسیر همکاری</h2>
+          <ol class="process-list reveal-on-scroll">
+            <li>
+              <span class="step-num">۱</span>
+              <div>
+                <h3>گفت‌وگوی آشنایی</h3>
+                <p>یک جلسه کوتاه و رایگان برای شناخت هدف‌ها و نیازهای شما.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">۲</span>
+              <div>
+                <h3>طراحی مسیر مشترک</h3>
+                <p>تدوین برنامه کوچینگ متناسب با شرایط و اهداف شما.</p>
+              </div>
+            </li>
+            <li>
+              <span class="step-num">۳</span>
+              <div>
+                <h3>همراهی و پیگیری</h3>
+                <p>جلسات منظم همراه با بازخورد و پیگیری پیشرفت.</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- TRUST / CERTIFICATIONS -->
+      <section class="trust">
+        <div class="container">
+          <p class="trust-label reveal-on-scroll">گواهی‌نامه‌ها و عضویت‌های حرفه‌ای</p>
+          <div class="cert-row reveal-on-scroll">
+            <span class="cert-badge">[گواهی‌نامه]</span>
+            <span class="cert-badge">[گواهی‌نامه]</span>
+            <span class="cert-badge">[عضویت انجمن]</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="cta-band">
+        <div class="container cta-band-inner reveal-on-scroll">
+          <h2>آماده‌اید مسیر رشدتان را طراحی کنید؟</h2>
+          <a href="pages/reserve.html" class="btn btn-light">رزرو جلسه مشاوره</a>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
-      <p id="clock"></p>
-      <p id="date"></p>
-      <div class="social">
-        <a href="#"
-          ><img src=Assets/image/linkedin-logo-6.png" alt="لینکدین"
-        /></a>
-        <a href="#"
-          ><img src="Assets/image/telegram-logo.png" alt="تلگرام"
-        /></a>
-        <a href="#"
-          ><img src="Assets/image/instagram-logo.jpg" alt="اینستاگرام"
-        /></a>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <span class="logo-word">Zaribafan</span>
+            <p class="local-time">
+              <span class="sr-only">زمان و تاریخ محلی</span>
+              <span id="clock" aria-hidden="true"></span>
+              <span id="date" aria-hidden="true"></span>
+            </p>
+          </div>
+
+          <div class="social" aria-label="شبکه‌های اجتماعی">
+            <a href="#" aria-label="لینکدین">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="4.5" /><path d="M7.2 10v7M7.2 7.2v.01M11.5 17v-4.2c0-1.5 1-2.5 2.4-2.5s2.1 1 2.1 2.5V17" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <a href="#" aria-label="تلگرام">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 3 3 10.5l6 2m12-9.5-3.2 15L11 14m10-11L11 14m0 0-.8 5.8L13 15" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            </a>
+            <a href="#" aria-label="اینستاگرام">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="6" /><circle cx="12" cy="12" r="4.3" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h2>لینک‌های مفید</h2>
+          <ul class="links">
+            <li>
+              <a href="http://bciut.ir/" target="_blank" rel="noopener">مؤسسه مربیگری دانشگاه تهران</a>
+            </li>
+            <li><a href="#" target="_blank" rel="noopener">فدراسیون بین‌المللی مربیگری</a></li>
+          </ul>
+        </div>
+
+        <p class="copyright">© تمامی حقوق محفوظ است</p>
       </div>
-      <h2>لینک‌های مفید</h2>
-      <ul class="links">
-        <li>
-          <a href="http://bciut.ir/" target="_blank"
-            >مؤسسه مربیگری دانشگاه تهران</a
-          >
-        </li>
-        <li><a href="#" target="_blank">فدراسیون بین‌المللی مربیگری</a></li>
-      </ul>
-      <p>© تمامی حقوق محفوظ است</p>
     </footer>
-    <script>
-      const updateclock = () => {
-        let now = new Date().toLocaleTimeString();
-        let day_now = new Date().toLocaleDateString();
-        document.getElementById("clock").textContent = now;
-        document.getElementById("date").textContent = day_now;
-      };
-      setInterval(updateclock, 1000);
-      updateclock();
-    </script>
+
+    <script src="js/main.js"></script>
   </body>
 </html>
