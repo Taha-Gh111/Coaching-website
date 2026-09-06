@@ -3,196 +3,300 @@
   src: url("../Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.woff");
   src: url("../Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.ttf");
 }
+
 @font-face {
   font-family: Shabnam;
   src: url("../Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.woff");
   src: url("../Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.ttf");
 }
+
 @font-face {
   font-family: Yekan;
   src: url("../Assets/fontFarsi/font/yekan-font/yekan-regular.woff");
   src: url("../Assets/fontFarsi/font/yekan-font/yekan-regular.ttf");
 }
+
 @font-face {
   font-family: Tanha;
   src: url("../Assets/fontFarsi/font/tanha-font-v0.9/Tanha.woff");
   src: url("../Assets/fontFarsi/font/tanha-font-v0.9/Tanha.ttf");
 }
+
 @font-face {
   font-family: Parasto;
   src: url("../Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo-Bold.woff");
   src: url("../Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo.ttf");
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: sans-serif;
+/* ==========================================================================
+   Zaribafan — Education page
+   مفهوم: یک «فهرست دوره‌ها»ی دانشگاهی — ستون راهنمای حوزه‌ها + فهرست
+   ردیفی قابل‌بازشدن، به‌جای کارت‌های چرخشیِ قبلی. این فایل بعد از
+   css/base.css لود می‌شه.
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+
+.edu-hero {
+  background: radial-gradient(120% 140% at 15% 0%, var(--ink-900) 0%, var(--ink-950) 55%);
+  padding: 80px 0 64px;
 }
 
-body {
-  background: #f5f7fa;
-  color: #333;
-  line-height: 1.8;
-}
-
-.container {
-  width: 90%;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.header {
-  background: #0f172a;
-  padding: 15px 0;
-}
-
-.logo {
+.edu-hero h1 {
+  font-family: var(--font);
+  font-weight: 800;
   color: #fff;
-  font-size: 22px;
-  font-weight: bold;
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  margin-bottom: 16px;
 }
 
-.header .container {
+.edu-hero p {
+  color: var(--text-on-dark-muted);
+  max-width: 52ch;
+  font-size: 1.02rem;
+}
+
+.edu-meta {
+  margin-top: 18px;
+  color: var(--gold-400);
+  font-size: 0.88rem;
+  font-weight: 700;
+}
+
+/* ---------- Catalog layout ---------- */
+
+.edu-catalog {
+  padding: 64px 0 90px;
+}
+
+.edu-layout {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+/* Rail */
+
+.edu-rail {
+  position: sticky;
+  top: 100px;
+}
+
+.edu-rail-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.edu-rail-list a {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.nav a {
-  color: #e5e7eb;
-  margin-right: 20px;
+  gap: 10px;
+  padding: 10px 4px 10px 0;
+  border-inline-start: 2px solid var(--line);
+  padding-inline-start: 16px;
+  color: var(--text-secondary);
   text-decoration: none;
-  font-size: 15px;
-  font-family: Parasto;
+  font-size: 0.9rem;
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
 }
 
-.nav a:hover {
-  color: #38bdf8;
+.edu-rail-list a:hover {
+  color: var(--text-primary);
+  border-inline-start-color: var(--gold-500);
 }
 
-/* test */
-.page-title {
-  text-align: center;
-  margin: 60px 0 40px;
-  font-size: 28px;
-  font-family: Parasto;
-  color: #0f172a;
+.edu-rail-list a span {
+  color: var(--text-secondary);
+  font-size: 0.78rem;
 }
 
-/* Grid */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 30px;
-  margin-bottom: 80px;
+/* Category */
+
+.edu-category {
+  padding-bottom: 64px;
+  scroll-margin-top: 96px;
 }
 
-/* Card base */
-.card {
-  perspective: 1000px;
+.edu-category:last-child {
+  padding-bottom: 0;
 }
 
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 260px;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-  cursor: pointer;
+.edu-category-head {
+  margin-bottom: 26px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
 }
 
-.card:hover .card-inner {
-  transform: rotateY(180deg);
+.edu-category-head h2 {
+  font-family: var(--font);
+  font-weight: 800;
+  color: var(--text-primary);
+  font-size: clamp(1.7rem, 3vw, 2.2rem);
+  margin-bottom: 8px;
 }
 
-/* Front & Back */
-.card-front,
-.card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 16px;
-  backface-visibility: hidden;
+.edu-category-head p {
+  color: var(--text-secondary);
+  font-size: 0.96rem;
+  max-width: 56ch;
+}
+
+/* Course rows */
+
+.course-list {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 25px;
 }
 
-/* Front */
-.card-front {
-  background: linear-gradient(135deg, #0f172a, #1e293b);
-  color: #fff;
+.course-row {
+  border-top: 1px solid var(--line);
 }
 
-.card-front h3 {
-  font-size: 20px;
-  margin-bottom: 10px;
-  font-family: Parasto;
+.course-row:last-child {
+  border-bottom: 1px solid var(--line);
 }
 
-.card-front p {
-  font-size: 14px;
-  opacity: 0.8;
-}
-
-/* Back */
-.card-back {
-  background: #ffffff;
-  color: #0f172a;
-  transform: rotateY(180deg);
-  border: 2px #0f172a solid;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-}
-
-.card-back p {
-  font-size: 15px;
-  text-align: center;
-  font-family: Parasto;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .cards {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .cards {
-    grid-template-columns: 1fr;
-  }
-}
-
-.footer {
-background: #0f172a;
-  color: #cbd5f5;
-  text-align: center;
-  padding: 20px;
-  font-size: 14px;
-}
-
-.social img {
-  width: 75px;
-  margin: 15px;
-  border-radius: 100px;
-  transition: transform 0.4s;
-}
-
-.social img:hover {
-  transform: scale(1.2) rotate(15deg);
-}
-
-.links {
+.course-row summary {
   list-style: none;
-  margin-bottom: 40px;
-  margin-top: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 2px;
 }
 
-.links a {
-  text-decoration: none;
-  color: darkgoldenrod;
+.course-row summary::-webkit-details-marker {
+  display: none;
+}
+
+.course-row summary:hover .course-title {
+  color: var(--text-primary);
+}
+
+.course-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  transition: color var(--dur-fast) var(--ease);
+}
+
+.course-title em {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--text-secondary);
+  font-size: 0.84em;
+  margin-inline-start: 12px;
+}
+
+.course-toggle {
+  position: relative;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.course-toggle::before,
+.course-toggle::after {
+  content: "";
+  position: absolute;
+  background: var(--text-secondary);
+  transition: transform var(--dur-fast) var(--ease), background var(--dur-fast) var(--ease);
+}
+
+.course-toggle::before {
+  inset-inline-start: 0;
+  top: 9px;
+  width: 20px;
+  height: 1.5px;
+}
+
+.course-toggle::after {
+  top: 0;
+  inset-inline-start: 9px;
+  width: 1.5px;
+  height: 20px;
+}
+
+.course-row[open] .course-toggle::before,
+.course-row[open] .course-toggle::after {
+  background: var(--gold-500);
+}
+
+.course-row[open] .course-toggle::after {
+  transform: rotate(90deg);
+}
+
+.course-desc {
+  padding: 0 2px 24px;
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  max-width: 62ch;
+  border-inline-start: 2px solid var(--gold-500);
+  margin-inline-start: 2px;
+  padding-inline-start: 18px;
+}
+
+.course-row[open] .course-desc {
+  animation: course-desc-in 0.28s var(--ease);
+}
+
+@keyframes course-desc-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .course-row[open] .course-desc {
+    animation: none;
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .edu-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .edu-rail {
+    position: static;
+    margin-bottom: 36px;
+  }
+
+  .edu-rail-list {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 6px;
+  }
+
+  .edu-rail-list a {
+    flex-shrink: 0;
+    border: 1px solid var(--line);
+    border-inline-start: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 9px 16px;
+  }
+
+  .edu-rail-list a:hover {
+    border-color: var(--gold-500);
+  }
+
+  .course-title em {
+    display: block;
+    margin-inline-start: 0;
+    margin-top: 3px;
+  }
 }

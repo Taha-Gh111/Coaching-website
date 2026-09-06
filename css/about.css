@@ -217,18 +217,23 @@
     grid-template-columns: 1fr;
     text-align: center;
   }
+
   .profile-intro {
     margin-inline: auto;
   }
+
   .profile-photo {
     max-width: 220px;
   }
+
   .credential-item {
     text-align: right;
   }
+
   .tags {
     justify-content: center;
   }
+
   .credential-photos-grid {
     grid-template-columns: 1fr;
     max-width: 340px;

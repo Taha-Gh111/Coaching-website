@@ -146,6 +146,7 @@ button {
   html {
     scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {
@@ -286,9 +287,11 @@ button {
 .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
+
 .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(2) {
   opacity: 0;
 }
+
 .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
@@ -613,6 +616,7 @@ html[dir="rtl"] .mobile-nav-panel {
   .nav {
     display: none;
   }
+
   .menu-toggle {
     display: flex;
   }
