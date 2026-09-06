@@ -251,9 +251,9 @@ button {
 .nav-cta {
   background: var(--gold-500);
   color: var(--ink-950) !important;
-  padding: 10px 22px;
+  padding: 12px 30px;
   border-radius: var(--radius-sm);
-  font-weight: 700;
+  font-weight: 600;
   transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 
