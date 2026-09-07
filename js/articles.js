@@ -87,7 +87,7 @@
     return (
       '<article class="article-card" data-id="' + article.id + '" tabindex="0" role="button" ' +
       'aria-label="مطالعه مقاله: ' + article.title + '">' +
-      '<div class="article-poster" aria-hidden="true">' + <img src="../Assets/image/ChatGPT Image Sep 6, 2026, 08_44_18 PM.png" alt="" /> + "<span>پوستر مقاله</span></div>" +
+      '<div class="article-poster" aria-hidden="true">' + POSTER_ICON + "<span>پوستر مقاله</span></div>" +
       '<div class="article-body">' +
       '<span class="article-tag">' + article.tag + "</span>" +
       "<h3>" + article.title + "</h3>" +
