@@ -1,0 +1,350 @@
+/* ==========================================================================
+   Zaribafan — Articles page
+   شبکه‌ای از کاشی‌های مقاله + یک پنل مطالعه که با کلیک روی «بیشتر بخوانید»
+   صفحه را نصف می‌کند: نیمی مقاله‌ی کامل، نیمی دیگر همان کاشی‌ها در حالت
+   جمع‌شده (دقیقاً مثل باز شدن پنل کد) — با × برای بستن. زیر ۹۰۰px، پنل به‌جای
+   نصف‌کردن صفحه، تمام‌صفحه از پایین باز می‌شود. این فایل بعد از css/base.css
+   لود می‌شه.
+   ========================================================================== */
+
+/* ---------- Hero ---------- */
+
+.articles-hero {
+  background: radial-gradient(120% 140% at 85% 0%, var(--ink-900) 0%, var(--ink-950) 55%);
+  padding: 80px 0 64px;
+}
+
+.articles-hero h1 {
+  font-family: var(--font);
+  font-weight: 800;
+  color: #fff;
+  font-size: clamp(2rem, 3.6vw, 2.8rem);
+  margin-bottom: 14px;
+}
+
+.articles-hero p {
+  color: var(--text-on-dark-muted);
+  font-size: 1.02rem;
+}
+
+/* ---------- Section / shell ---------- */
+
+.articles-section {
+  padding: 64px 0 90px;
+}
+
+.articles-shell {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.articles-grid-wrap {
+  flex: 1 1 100%;
+  min-width: 0;
+  transition: flex-basis var(--dur-med) var(--ease);
+}
+
+/* ---------- Grid (normal / full-width state) ---------- */
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 28px;
+}
+
+.article-card {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--paper-alt);
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.article-card:hover {
+  border-color: var(--gold-500);
+}
+
+.article-poster {
+  aspect-ratio: 16 / 10;
+  border-bottom: 1px dashed var(--line);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  flex-shrink: 0;
+  transition: width var(--dur-med) var(--ease), height var(--dur-med) var(--ease);
+}
+
+.article-poster svg {
+  width: 30px;
+  height: 30px;
+}
+
+.article-poster span {
+  font-size: 0.75rem;
+  max-width: 20ch;
+  text-align: center;
+}
+
+.article-body {
+  padding: 20px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.article-tag {
+  color: var(--sage-500);
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.article-card h3 {
+  font-family: var(--font);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1.02rem;
+  line-height: 1.6;
+}
+
+.article-excerpt {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.article-more {
+  margin-top: auto;
+  padding-top: 6px;
+  color: var(--gold-600);
+  font-size: 0.86rem;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.article-more svg {
+  width: 14px;
+  height: 14px;
+  transition: transform var(--dur-fast) var(--ease);
+}
+
+.article-card:hover .article-more svg {
+  transform: translateX(-3px);
+}
+
+/* ---------- Reader panel (hidden by default) ---------- */
+
+.article-reader {
+  flex: 0 0 0%;
+  width: 0%;
+  overflow: hidden;
+  opacity: 0;
+  transition: flex-basis var(--dur-med) var(--ease), opacity var(--dur-fast) var(--ease);
+}
+
+.reader-topbar {
+  display: flex;
+  justify-content: flex-start;
+  padding-bottom: 14px;
+}
+
+.reader-close {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary);
+  flex-shrink: 0;
+  transition: border-color var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease),
+    transform var(--dur-fast) var(--ease);
+}
+
+.reader-close svg {
+  width: 16px;
+  height: 16px;
+}
+
+.reader-close:hover {
+  border-color: var(--gold-500);
+  color: var(--gold-600);
+  transform: rotate(90deg);
+}
+
+.reader-poster {
+  aspect-ratio: 16 / 9;
+  border: 1px dashed var(--line);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: var(--text-secondary);
+  opacity: 0.75;
+  margin-bottom: 26px;
+}
+
+.reader-poster svg {
+  width: 40px;
+  height: 40px;
+}
+
+.reader-content h2 {
+  font-family: var(--font);
+  font-weight: 800;
+  color: var(--text-primary);
+  font-size: clamp(1.4rem, 2.6vw, 1.9rem);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+.reader-tag {
+  display: inline-block;
+  color: var(--sage-500);
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.reader-body {
+  max-width: 68ch;
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.reader-body p {
+  margin-bottom: 20px;
+}
+
+/* ---------- Split state (desktop: side by side) ---------- */
+
+.articles-shell.is-split {
+  gap: 44px;
+  align-items: stretch;
+}
+
+.articles-shell.is-split .articles-grid-wrap {
+  flex-basis: 42%;
+}
+
+.articles-shell.is-split .article-reader {
+  flex-basis: 54%;
+  width: auto;
+  opacity: 1;
+  overflow-y: auto;
+  max-height: calc(100vh - 120px);
+  position: sticky;
+  top: 100px;
+  padding-inline-start: 4px;
+}
+
+/* Compact ("code panel") tile mode while split */
+
+.is-split .articles-grid {
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.is-split .article-card {
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+}
+
+.is-split .article-poster {
+  aspect-ratio: 1 / 1;
+  width: 56px;
+  height: 56px;
+  border-bottom: none;
+  border-radius: 8px;
+  border: 1px dashed var(--line);
+}
+
+.is-split .article-poster svg {
+  width: 18px;
+  height: 18px;
+}
+
+.is-split .article-poster span {
+  display: none;
+}
+
+.is-split .article-body {
+  padding: 4px 4px 4px 0;
+  gap: 2px;
+}
+
+.is-split .article-tag,
+.is-split .article-excerpt,
+.is-split .article-more {
+  display: none;
+}
+
+.is-split .article-card h3 {
+  font-size: 0.86rem;
+  -webkit-line-clamp: 2;
+}
+
+.is-split .article-card.is-active {
+  border-color: var(--gold-500);
+  background: var(--paper);
+}
+
+/* ---------- Responsive: full-screen overlay under 900px ---------- */
+
+@media (max-width: 900px) {
+  .articles-shell.is-split {
+    gap: 0;
+    display: block;
+  }
+
+  .articles-shell.is-split .articles-grid-wrap {
+    display: none;
+  }
+
+  .articles-shell.is-split .article-reader {
+    position: static;
+    flex-basis: auto;
+    width: 100%;
+    max-height: none;
+    opacity: 1;
+    overflow-y: visible;
+    padding-inline-start: 0;
+  }
+
+  .reader-topbar {
+    position: sticky;
+    top: 70px;
+    z-index: 5;
+    background: var(--paper);
+    margin-bottom: 4px;
+    padding: 10px 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .articles-grid-wrap,
+  .article-reader,
+  .article-poster {
+    transition: none;
+  }
+}
