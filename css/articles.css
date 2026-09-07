@@ -1,10 +1,13 @@
 /* ==========================================================================
-   Zaribafan — Articles page
-   شبکه‌ای از کاشی‌های مقاله + یک پنل مطالعه که با کلیک روی «بیشتر بخوانید»
-   صفحه را نصف می‌کند: نیمی مقاله‌ی کامل، نیمی دیگر همان کاشی‌ها در حالت
-   جمع‌شده (دقیقاً مثل باز شدن پنل کد) — با × برای بستن. زیر ۹۰۰px، پنل به‌جای
-   نصف‌کردن صفحه، تمام‌صفحه از پایین باز می‌شود. این فایل بعد از css/base.css
-   لود می‌شه.
+   Zaribafan — Articles page + standalone article pages
+   هر مقاله یک صفحه‌ی HTML واقعی و مستقل داره (برای سئو و ویرایش راحت).
+   کلیک روی «بیشتر بخوانید» به‌صورت پیش‌فرض یک لینک معمولیه (بدون جاوااسکریپت
+   هم کار می‌کنه)؛ اگه جاوااسکریپت فعال باشه، همون صفحه رو fetch می‌کنه و به‌جای
+   رفتن، صفحه را نصف می‌کند: نیمی مقاله‌ی کامل، نیمی دیگر همان کاشی‌ها در حالت
+   جمع‌شده (دقیقاً مثل باز شدن پنل کد) — با × برای بستن. اگه fetch به هر
+   دلیلی شکست بخوره، همون لینک معمولی باز می‌شه، یعنی هیچ‌وقت صفحه خراب
+   نمی‌مونه. زیر ۹۰۰px، پنل به‌جای نصف‌کردن صفحه، جای لیست رو می‌گیره (هدر و
+   فوتر همیشه در دسترس می‌مونن). این فایل بعد از css/base.css لود می‌شه.
    ========================================================================== */
 
 /* ---------- Hero ---------- */
@@ -57,6 +60,7 @@
   display: flex;
   flex-direction: column;
   text-align: right;
+  text-decoration: none;
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
   background: var(--paper-alt);
@@ -187,7 +191,7 @@
   transform: rotate(90deg);
 }
 
-.reader-poster {
+.article-poster-lg {
   aspect-ratio: 16 / 9;
   border: 1px dashed var(--line);
   border-radius: var(--radius-md);
@@ -199,14 +203,22 @@
   color: var(--text-secondary);
   opacity: 0.75;
   margin-bottom: 26px;
+  overflow: hidden;
 }
 
-.reader-poster svg {
+.article-poster-lg svg {
   width: 40px;
   height: 40px;
 }
 
-.reader-content h2 {
+.article-poster-lg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.reader-content h1,
+.article-page h1 {
   font-family: var(--font);
   font-weight: 800;
   color: var(--text-primary);
@@ -215,22 +227,65 @@
   margin-bottom: 10px;
 }
 
-.reader-tag {
+.reader-content .article-tag,
+.article-page .article-tag {
   display: inline-block;
-  color: var(--sage-500);
-  font-size: 0.85rem;
-  font-weight: 700;
   margin-bottom: 12px;
 }
 
-.reader-body {
+.article-content-body {
   max-width: 68ch;
   color: var(--text-secondary);
   font-size: 1rem;
 }
 
-.reader-body p {
+.article-content-body p {
   margin-bottom: 20px;
+}
+
+.article-content-body a {
+  color: var(--sage-500);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.article-content-body a:hover {
+  border-color: var(--sage-500);
+}
+
+.article-content-body h2 {
+  font-family: var(--font);
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 1.2rem;
+  margin: 32px 0 14px;
+}
+
+/* ---------- Standalone article page (direct visits, real URLs) ---------- */
+
+.article-page {
+  padding: 56px 0 90px;
+}
+
+.article-page .container {
+  max-width: 760px;
+}
+
+.back-to-articles {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--sage-500);
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 28px;
+}
+
+.back-to-articles:hover {
+  text-decoration: underline;
 }
 
 /* ---------- Split state (desktop: side by side) ---------- */

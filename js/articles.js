@@ -2,77 +2,15 @@
   "use strict";
 
   /* ==========================================================================
-     داده‌ی مقالات — فعلاً محتوای نمونه برای تست چیدمان و تعامل.
-     در فاز بعد، هر آبجکت با متن و پوستر واقعی همان مقاله جایگزین می‌شود.
+     این فایل دیگه محتوای مقاله‌ها رو نگه نمی‌داره — هر مقاله یک صفحه‌ی HTML
+     واقعی داره (برای سئو و ویرایش راحت‌تر). این اسکریپت فقط رفتار اختیاری
+     «پنل نصفه» رو اضافه می‌کنه:
+       ۱) روی کلیک، به‌جای رفتن به صفحه، محتوای همون فایل رو fetch می‌کنه
+       ۲) بخش [data-article-content] رو از داخلش درمیاره و توی پنل نشون می‌ده
+       ۳) اگه fetch به هر دلیلی (مثلاً باز کردن فایل به‌صورت مستقیم بدون
+          سرور) شکست بخوره، به‌صورت خودکار همون لینک معمولی رو باز می‌کنه —
+          یعنی صفحه هیچ‌وقت خراب یا خالی نمی‌مونه.
      ========================================================================== */
-  var ARTICLES = [
-    {
-      id: "future-planning",
-      tag: "رشد فردی",
-      title: "چگونه برای آینده‌ات برنامه‌ریزی واقعی داشته باشی؟",
-      excerpt: "از رویا تا عمل، با یک نقشه‌ی روشن — گام‌های عملی برای تبدیل هدف‌های بزرگ به برنامه‌ای قابل‌اجرا.",
-      body: [
-        "[متن کامل این مقاله در فاز بعدی جایگزین می‌شود. اینجا فقط برای تست چیدمان و اسکرول پنل مطالعه است.]",
-        "[پاراگراف دوم نمونه — طول متن واقعی می‌تواند بیشتر یا کمتر از این باشد؛ چیدمان پنل با هر طولی کار می‌کند.]"
-      ]
-    },
-    {
-      id: "career-signals",
-      tag: "کوچینگ شغلی",
-      title: "۵ نشانه که وقت تغییر مسیر شغلی‌ست",
-      excerpt: "وقتی رضایت شغلی افت می‌کند، مسئله همیشه «شغل اشتباه» نیست. این نشانه‌ها را جدی بگیرید.",
-      body: [
-        "[متن کامل این مقاله در فاز بعدی جایگزین می‌شود.]",
-        "[پاراگراف دوم نمونه برای تست اسکرول پنل مطالعه.]"
-      ]
-    },
-    {
-      id: "business-finance",
-      tag: "کسب‌وکار",
-      title: "چرا اکثر کسب‌وکارهای کوچک بدون برنامه‌ی مالی شکست می‌خورند",
-      excerpt: "سرمایه کافی نیست؛ بدون نقشه‌ی مالی روشن، رشد به همان سرعت که می‌آید از دست می‌رود.",
-      body: [
-        "[متن کامل این مقاله در فاز بعدی جایگزین می‌شود.]",
-        "[پاراگراف دوم نمونه برای تست اسکرول پنل مطالعه.]"
-      ]
-    },
-    {
-      id: "leadership-crisis",
-      tag: "رهبری",
-      title: "رهبری در بحران: چطور تصمیم بگیریم وقتی همه‌چیز نامعلوم است",
-      excerpt: "تصمیم‌گیری در ابهام یک مهارت است، نه یک استعداد ذاتی. این‌طور می‌شود تمرینش کرد.",
-      body: [
-        "[متن کامل این مقاله در فاز بعدی جایگزین می‌شود.]",
-        "[پاراگراف دوم نمونه برای تست اسکرول پنل مطالعه.]"
-      ]
-    },
-    {
-      id: "coaching-vs-consulting",
-      tag: "کوچینگ",
-      title: "کوچینگ چیست و چه تفاوتی با مشاوره دارد؟",
-      excerpt: "خیلی‌ها این دو را یکی می‌دانند. فهمیدن تفاوت، به انتخاب مسیر درست کمک می‌کند.",
-      body: [
-        "[متن کامل این مقاله در فاز بعدی جایگزین می‌شود.]",
-        "[پاراگراف دوم نمونه برای تست اسکرول پنل مطالعه.]"
-      ]
-    },
-    {
-      id: "feedback-power",
-      tag: "روان‌شناسی",
-      title: "قدرت بازخورد: چطور از انتقاد برای رشد استفاده کنیم",
-      excerpt: "بازخورد ناخوشایند معمولاً همان چیزی‌ست که بیشترین رشد را می‌سازد — اگر درست شنیده شود.",
-      body: [
-        "[متن کامل این مقاله در فاز بعدی جایگزین می‌شود.]",
-        "[پاراگراف دوم نمونه برای تست اسکرول پنل مطالعه.]"
-      ]
-    }
-  ];
-
-  var POSTER_ICON =
-    '<svg viewBox="0 0 48 48" fill="none"><rect x="4" y="4" width="40" height="40" rx="4" stroke="currentColor" stroke-width="1.4"/><circle cx="17" cy="17" r="4" stroke="currentColor" stroke-width="1.4"/><path d="M6 36 L18 24 L26 32 L34 22 L44 34" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>';
-
-  var ARROW_ICON =
-    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 6l-6 6 6 6"/></svg>';
 
   var shell = document.getElementById("articlesShell");
   var grid = document.getElementById("articlesGrid");
@@ -81,66 +19,61 @@
   var readerClose = document.getElementById("readerClose");
   var lastTrigger = null;
 
-  if (!shell || !grid || !reader) return;
-
-  function cardHTML(article) {
-    return (
-      '<article class="article-card" data-id="' + article.id + '" tabindex="0" role="button" ' +
-      'aria-label="مطالعه مقاله: ' + article.title + '">' +
-      '<div class="article-poster" aria-hidden="true">' + POSTER_ICON + "<span>پوستر مقاله</span></div>" +
-      '<div class="article-body">' +
-      '<span class="article-tag">' + article.tag + "</span>" +
-      "<h3>" + article.title + "</h3>" +
-      '<p class="article-excerpt">' + article.excerpt + "</p>" +
-      '<span class="article-more">بیشتر بخوانید ' + ARROW_ICON + "</span>" +
-      "</div>" +
-      "</article>"
-    );
+  // اگه عناصر لازم پیدا نشدن یا مرورگر fetch رو پشتیبانی نمی‌کنه، هیچ کاری
+  // نکن — کارت‌ها همون لینک‌های ساده و کاملاً کاربردی می‌مونن.
+  if (!shell || !grid || !reader || !readerContent || !readerClose || !window.fetch) {
+    return;
   }
 
-  function renderGrid() {
-    grid.innerHTML = ARTICLES.map(cardHTML).join("");
+  var cards = grid.querySelectorAll(".article-card");
+
+  function setActive(url) {
+    cards.forEach(function (c) {
+      c.classList.toggle("is-active", c.getAttribute("href") === url);
+    });
   }
 
-  function findArticle(id) {
-    for (var i = 0; i < ARTICLES.length; i++) {
-      if (ARTICLES[i].id === id) return ARTICLES[i];
-    }
-    return null;
-  }
-
-  function openArticle(id, triggerEl) {
-    var article = findArticle(id);
-    if (!article) return;
-
+  function openArticle(url, triggerEl, pushHistory) {
     lastTrigger = triggerEl || lastTrigger;
 
-    readerContent.innerHTML =
-      '<div class="reader-poster" aria-hidden="true">' + POSTER_ICON + "<span>پوستر مقاله</span></div>" +
-      '<span class="reader-tag">' + article.tag + "</span>" +
-      "<h2>" + article.title + "</h2>" +
-      '<div class="reader-body">' +
-      article.body.map(function (p) { return "<p>" + p + "</p>"; }).join("") +
-      "</div>";
+    fetch(url)
+      .then(function (res) {
+        if (!res.ok) throw new Error("fetch failed: " + res.status);
+        return res.text();
+      })
+      .then(function (html) {
+        var doc = new DOMParser().parseFromString(html, "text/html");
+        var content = doc.querySelector("[data-article-content]");
+        if (!content) throw new Error("no article content found");
 
-    shell.classList.add("is-split");
-    reader.setAttribute("aria-hidden", "false");
+        readerContent.innerHTML = content.innerHTML;
+        shell.classList.add("is-split");
+        reader.setAttribute("aria-hidden", "false");
+        setActive(url);
+        reader.scrollTop = 0;
+        readerClose.focus({ preventScroll: true });
 
-    var cards = grid.querySelectorAll(".article-card");
-    for (var i = 0; i < cards.length; i++) {
-      cards[i].classList.toggle("is-active", cards[i].getAttribute("data-id") === id);
-    }
+        if (pushHistory !== false) {
+          history.pushState({ zaribafanArticle: url }, "", url);
+        }
 
-    readerClose.focus({ preventScroll: true });
+        var h1 = readerContent.querySelector("h1");
+        if (h1) document.title = h1.textContent + " | Zaribafan";
+      })
+      .catch(function () {
+        // شکست fetch (مثلاً فایل به‌صورت مستقیم و بدون سرور باز شده) —
+        // به‌جای صفحه‌ی خراب، همون ناوبری معمولی رو انجام بده.
+        window.location.href = url;
+      });
   }
 
-  function closeReader() {
+  function closeReader(pushHistory) {
     shell.classList.remove("is-split");
     reader.setAttribute("aria-hidden", "true");
+    setActive(null);
 
-    var cards = grid.querySelectorAll(".article-card");
-    for (var i = 0; i < cards.length; i++) {
-      cards[i].classList.remove("is-active");
+    if (pushHistory !== false) {
+      history.pushState({}, "", "articles.html");
     }
 
     if (lastTrigger && typeof lastTrigger.focus === "function") {
@@ -148,25 +81,28 @@
     }
   }
 
-  grid.addEventListener("click", function (e) {
-    var card = e.target.closest(".article-card");
-    if (card) openArticle(card.getAttribute("data-id"), card);
+  cards.forEach(function (card) {
+    card.addEventListener("click", function (e) {
+      e.preventDefault();
+      openArticle(card.getAttribute("href"), card);
+    });
   });
 
-  grid.addEventListener("keydown", function (e) {
-    if (e.key !== "Enter" && e.key !== " ") return;
-    var card = e.target.closest(".article-card");
-    if (card) {
-      e.preventDefault();
-      openArticle(card.getAttribute("data-id"), card);
+  readerClose.addEventListener("click", function () {
+    closeReader();
+  });
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && shell.classList.contains("is-split")) {
+      closeReader();
     }
   });
 
-  readerClose.addEventListener("click", closeReader);
-
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && shell.classList.contains("is-split")) closeReader();
+  window.addEventListener("popstate", function (e) {
+    if (e.state && e.state.zaribafanArticle) {
+      openArticle(e.state.zaribafanArticle, null, false);
+    } else if (shell.classList.contains("is-split")) {
+      closeReader(false);
+    }
   });
-
-  renderGrid();
 })();
