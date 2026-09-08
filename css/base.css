@@ -1,5 +1,5 @@
 /* ==========================================================================
-   Zaribafan — Shared theme (tokens, header, mobile nav, buttons, motion, footer)
+   Zaribafan — Shared theme (tokens, header, mobile nav, buttons, footer)
    این فایل روی همه‌ی صفحات لود می‌شه. هر تغییری روی رنگ‌ها / هدر / فوتر
    فقط باید همین‌جا انجام بشه تا خودکار روی کل سایت اثر بذاره.
    ========================================================================== */
@@ -146,7 +146,6 @@ button {
   html {
     scroll-behavior: auto;
   }
-
   *,
   *::before,
   *::after {
@@ -252,9 +251,10 @@ button {
 .nav-cta {
   background: var(--gold-500);
   color: var(--ink-950) !important;
-  padding: 12px 30px;
+  padding: 14px 32px;
   border-radius: var(--radius-sm);
-  font-weight: 600;
+  font-weight: 700;
+  letter-spacing: 0.01em;
   transition: background var(--dur-fast) var(--ease), transform var(--dur-fast) var(--ease);
 }
 
@@ -287,11 +287,9 @@ button {
 .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
-
 .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(2) {
   opacity: 0;
 }
-
 .menu-toggle[aria-expanded="true"] .menu-toggle-bar:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
@@ -388,6 +386,10 @@ html[dir="rtl"] .mobile-nav-panel {
   transform: translateY(10px);
 }
 
+.mobile-nav-links a.is-current {
+  color: var(--gold-400);
+}
+
 .mobile-nav.is-open .mobile-nav-links a {
   animation: nav-link-in var(--dur-med) var(--ease) forwards;
   animation-delay: calc(var(--i) * 55ms + 60ms);
@@ -459,6 +461,27 @@ html[dir="rtl"] .mobile-nav-panel {
 .btn-outline:hover {
   border-color: var(--text-secondary);
   color: var(--text-primary);
+}
+
+/* ==========================================================================
+   CTA band — shared closing section (homepage, about, and beyond)
+   ========================================================================== */
+
+.cta-band {
+  background: var(--ink-950);
+  padding: 68px 0;
+}
+
+.cta-band-inner {
+  text-align: center;
+}
+
+.cta-band h2 {
+  font-family: var(--font);
+  font-weight: 700;
+  color: #fff;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  margin-bottom: 28px;
 }
 
 /* ==========================================================================
@@ -616,7 +639,6 @@ html[dir="rtl"] .mobile-nav-panel {
   .nav {
     display: none;
   }
-
   .menu-toggle {
     display: flex;
   }

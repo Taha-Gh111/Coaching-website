@@ -26,22 +26,8 @@
         <a href="#" class="logo" aria-label="Zaribafan – صفحه اصلی">
           <span class="logo-mark" aria-hidden="true">
             <svg viewBox="0 0 32 32" fill="none">
-              <rect
-                x="1"
-                y="1"
-                width="30"
-                height="30"
-                rx="7"
-                stroke="currentColor"
-                stroke-width="1.4"
-              />
-              <path
-                d="M9 21 L16 10 L23 21"
-                stroke="currentColor"
-                stroke-width="1.6"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
+              <rect x="1" y="1" width="30" height="30" rx="7" stroke="currentColor" stroke-width="1.4" />
+              <path d="M9 21 L16 10 L23 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" />
               <circle cx="16" cy="10" r="1.6" fill="currentColor" />
             </svg>
           </span>
@@ -49,9 +35,10 @@
         </a>
 
         <nav class="nav" id="primary-nav" aria-label="ناوبری اصلی">
+          <a href="index.html" class="is-current">خانه</a>
           <a href="pages/articles.html">مقالات</a>
           <a href="pages/about.html">درباره ما</a>
-          <a href="pages/education.html">دوره های آموزشی</a>
+          <a href="pages/education.html">آموزش‌ها</a>
           <a href="pages/contact.html">ارتباط با ما</a>
           <a href="pages/reserve.html" class="nav-cta">رزرو جلسه</a>
         </nav>
@@ -72,42 +59,23 @@
     </header>
 
     <!-- MOBILE NAV OVERLAY -->
-    <div
-      class="mobile-nav"
-      id="mobile-nav"
-      role="dialog"
-      aria-modal="true"
-      aria-label="منوی ناوبری"
-    >
+    <div class="mobile-nav" id="mobile-nav" role="dialog" aria-modal="true" aria-label="منوی ناوبری">
       <div class="mobile-nav-backdrop" id="mobile-nav-backdrop"></div>
       <div class="mobile-nav-panel">
         <div class="mobile-nav-top">
           <span class="logo-word">Zaribafan</span>
-          <button
-            type="button"
-            class="mobile-nav-close"
-            id="mobile-nav-close"
-            aria-label="بستن منو"
-          >
-            <svg viewBox="0 0 24 24" fill="none">
-              <path
-                d="M5 5l14 14M19 5L5 19"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-              />
-            </svg>
+          <button type="button" class="mobile-nav-close" id="mobile-nav-close" aria-label="بستن منو">
+            <svg viewBox="0 0 24 24" fill="none"><path d="M5 5l14 14M19 5L5 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
           </button>
         </div>
         <nav class="mobile-nav-links" aria-label="ناوبری موبایل">
-          <a href="pages/articles.html" style="--i: 0">مقالات</a>
-          <a href="pages/about.html" style="--i: 1">درباره ما</a>
-          <a href="pages/education.html" style="--i: 2">دوره های آموزشی</a>
-          <a href="pages/contact.html" style="--i: 3">ارتباط با ما</a>
+          <a href="index.html" style="--i:0" class="is-current">خانه</a>
+          <a href="pages/articles.html" style="--i:1">مقالات</a>
+          <a href="pages/about.html" style="--i:2">درباره ما</a>
+          <a href="pages/education.html" style="--i:3">آموزش‌ها</a>
+          <a href="pages/contact.html" style="--i:4">ارتباط با ما</a>
         </nav>
-        <a href="pages/reserve.html" class="btn mobile-nav-cta" style="--i: 4"
-          >رزرو جلسه مشاوره</a
-        >
+        <a href="pages/reserve.html" class="btn mobile-nav-cta" style="--i:5">رزرو جلسه مشاوره</a>
       </div>
     </div>
 
@@ -116,38 +84,26 @@
       <section class="hero">
         <div class="container hero-grid">
           <div class="hero-content">
-            <h1 class="reveal-in" style="--d: 0">
+            <h1 class="reveal-in" style="--d:0">
               رشد تصادفی نیست؛<br />
               طراحی می‌شود
             </h1>
-            <p class="hero-text reveal-in" style="--d: 1">
+            <p class="hero-text reveal-in" style="--d:1">
               با جلسات کوچینگ هدفمند، به وضوح ذهنی، تصمیم‌گیری بهتر و عملکرد
               بالاتر برسید.
             </p>
-            <div class="hero-actions reveal-in" style="--d: 2">
+            <div class="hero-actions reveal-in" style="--d:2">
               <a href="pages/reserve.html" class="btn">رزرو جلسه مشاوره</a>
             </div>
-            <p class="hero-proof reveal-in" style="--d: 3">
-              بیش از <strong>[XX]</strong> جلسه کوچینگ خصوصی و سازمانی برگزار
-              شده است
+            <p class="hero-proof reveal-in" style="--d:3">
+              بیش از <strong>[XX]</strong> جلسه کوچینگ خصوصی و سازمانی برگزار شده
+              است
             </p>
           </div>
           <div class="hero-media">
             <div class="hero-frame">
-              <svg
-                class="hero-path"
-                viewBox="0 0 360 420"
-                fill="none"
-                aria-hidden="true"
-                preserveAspectRatio="none"
-              >
-                <path
-                  d="M8 400 C 90 340, 70 240, 150 190 S 300 60, 352 20"
-                  stroke="currentColor"
-                  stroke-width="1.6"
-                  stroke-linecap="round"
-                  pathLength="1"
-                />
+              <svg class="hero-path" viewBox="0 0 360 420" fill="none" aria-hidden="true" preserveAspectRatio="none">
+                <path d="M8 400 C 90 340, 70 240, 150 190 S 300 60, 352 20" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" pathLength="1" />
                 <circle cx="352" cy="20" r="4.5" fill="currentColor" />
               </svg>
               <div class="hero-photo">
@@ -169,12 +125,7 @@
         <div class="services-grid reveal-on-scroll">
           <article class="service">
             <span class="service-icon" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-              >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                 <circle cx="12" cy="8" r="3.4" />
                 <path d="M5 20c0-3.6 3.1-6.2 7-6.2s7 2.6 7 6.2" />
               </svg>
@@ -185,12 +136,7 @@
 
           <article class="service">
             <span class="service-icon" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-              >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
                 <path d="M4 19V9m6 10V5m6 14v-7" />
                 <path d="M3 19h18" />
               </svg>
@@ -201,25 +147,14 @@
 
           <article class="service">
             <span class="service-icon" aria-hidden="true">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-              >
-                <path
-                  d="M4 6.5C4 5.7 4.7 5 5.5 5H12v14H5.5c-.8 0-1.5-.7-1.5-1.5z"
-                />
-                <path
-                  d="M20 6.5c0-.8-.7-1.5-1.5-1.5H12v14h6.5c.8 0 1.5-.7 1.5-1.5z"
-                />
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                <path d="M4 6.5C4 5.7 4.7 5 5.5 5H12v14H5.5c-.8 0-1.5-.7-1.5-1.5z" />
+                <path d="M20 6.5c0-.8-.7-1.5-1.5-1.5H12v14h6.5c.8 0 1.5-.7 1.5-1.5z" />
               </svg>
             </span>
             <h3>دوره‌های آموزشی</h3>
             <p>آموزش مهارت‌های کاربردی برای زندگی و کار.</p>
-            <a href="pages/education.html" class="service-link"
-              >مشاهده همه دوره‌ها</a
-            >
+            <a href="pages/education.html" class="service-link">مشاهده همه دوره‌ها</a>
           </article>
         </div>
       </section>
@@ -277,9 +212,7 @@
       <!-- TRUST / CERTIFICATIONS -->
       <section class="trust">
         <div class="container">
-          <p class="trust-label reveal-on-scroll">
-            گواهی‌نامه‌ها و عضویت‌های حرفه‌ای
-          </p>
+          <p class="trust-label reveal-on-scroll">گواهی‌نامه‌ها و عضویت‌های حرفه‌ای</p>
           <div class="cert-row reveal-on-scroll">
             <span class="cert-badge">[گواهی‌نامه]</span>
             <span class="cert-badge">[گواهی‌نامه]</span>
@@ -292,9 +225,7 @@
       <section class="cta-band">
         <div class="container cta-band-inner reveal-on-scroll">
           <h2>آماده‌اید مسیر رشدتان را طراحی کنید؟</h2>
-          <a href="pages/reserve.html" class="btn btn-light"
-            >رزرو جلسه مشاوره</a
-          >
+          <a href="pages/reserve.html" class="btn btn-light">رزرو جلسه مشاوره</a>
         </div>
       </section>
     </main>
@@ -313,51 +244,13 @@
 
           <div class="social" aria-label="شبکه‌های اجتماعی">
             <a href="#" aria-label="لینکدین">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-              >
-                <rect x="2.5" y="2.5" width="19" height="19" rx="4.5" />
-                <path
-                  d="M7.2 10v7M7.2 7.2v.01M11.5 17v-4.2c0-1.5 1-2.5 2.4-2.5s2.1 1 2.1 2.5V17"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="4.5" /><path d="M7.2 10v7M7.2 7.2v.01M11.5 17v-4.2c0-1.5 1-2.5 2.4-2.5s2.1 1 2.1 2.5V17" stroke-linecap="round" stroke-linejoin="round" /></svg>
             </a>
             <a href="#" aria-label="تلگرام">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-              >
-                <path
-                  d="M21 3 3 10.5l6 2m12-9.5-3.2 15L11 14m10-11L11 14m0 0-.8 5.8L13 15"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 3 3 10.5l6 2m12-9.5-3.2 15L11 14m10-11L11 14m0 0-.8 5.8L13 15" stroke-linecap="round" stroke-linejoin="round" /></svg>
             </a>
             <a href="#" aria-label="اینستاگرام">
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.6"
-              >
-                <rect x="2.5" y="2.5" width="19" height="19" rx="6" />
-                <circle cx="12" cy="12" r="4.3" />
-                <circle
-                  cx="17.3"
-                  cy="6.7"
-                  r="1"
-                  fill="currentColor"
-                  stroke="none"
-                />
-              </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="6" /><circle cx="12" cy="12" r="4.3" /><circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" /></svg>
             </a>
           </div>
         </div>
@@ -366,15 +259,9 @@
           <h2>لینک‌های مفید</h2>
           <ul class="links">
             <li>
-              <a href="http://bciut.ir/" target="_blank" rel="noopener"
-                >مؤسسه مربیگری دانشگاه تهران</a
-              >
+              <a href="http://bciut.ir/" target="_blank" rel="noopener">مؤسسه مربیگری دانشگاه تهران</a>
             </li>
-            <li>
-              <a href="#" target="_blank" rel="noopener"
-                >فدراسیون بین‌المللی مربیگری</a
-              >
-            </li>
+            <li><a href="#" target="_blank" rel="noopener">فدراسیون بین‌المللی مربیگری</a></li>
           </ul>
         </div>
 
@@ -382,6 +269,6 @@
       </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/Main.js"></script>
   </body>
 </html>
