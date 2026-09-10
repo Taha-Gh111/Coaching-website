@@ -1,19 +1,3 @@
-@font-face {
-  font-family: Vaziri;
-  src: url("/Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.woff") format("woff"),
-       url("/Assets/fontFarsi/font/vazir-font-v18.0.0/Vazir-Bold.ttf") format("truetype");
-}
-@font-face {
-  font-family: Shabnam;
-  src: url("/Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.woff") format("woff"),
-       url("/Assets/fontFarsi/font/shabnam-font-v2.4.0/Shabnam-Bold.ttf") format("truetype");
-}
-@font-face {
-  font-family: Parasto;
-  src: url("/Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo-Bold.woff") format("woff"),
-       url("/Assets/fontFarsi/font/parastoo-font-v1.0.0-alpha5/web/Parastoo.ttf") format("truetype");
-}
-
 /* ==========================================================================
    Zaribafan — Reserve page
    همون زبان بصری هوم‌پیج (ink / paper / gold / خط مسیرِ طراحی‌شده)، این‌بار
@@ -221,7 +205,8 @@
 }
 
 .field input,
-.field select {
+.field select,
+.field textarea {
   width: 100%;
   border: none;
   border-bottom: 1.5px solid var(--line);
@@ -233,8 +218,27 @@
   transition: border-color var(--dur-fast) var(--ease);
 }
 
+.field select {
+  appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23565c70' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: left 2px center;
+}
+
+.field select:invalid {
+  color: var(--text-secondary);
+}
+
+.field textarea {
+  resize: vertical;
+  min-height: 84px;
+  line-height: 1.7;
+}
+
 .field input:focus,
-.field select:focus {
+.field select:focus,
+.field textarea:focus {
   outline: none;
   border-color: var(--gold-500);
 }
@@ -250,7 +254,9 @@
 }
 
 .field input:focus + label,
-.field input:not(:placeholder-shown) + label {
+.field input:not(:placeholder-shown) + label,
+.field textarea:focus + label,
+.field textarea:not(:placeholder-shown) + label {
   top: -8px;
   font-size: 12px;
   color: var(--gold-600);
@@ -276,6 +282,144 @@
   margin-top: 7px;
   font-size: 12px;
   color: var(--text-secondary);
+}
+
+/* Jalali calendar popup */
+
+.jalali-field {
+  position: relative;
+}
+
+.jalali-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  border: none;
+  border-bottom: 1.5px solid var(--line);
+  background: transparent;
+  padding: 14px 2px 10px;
+  font-size: 15px;
+  font-family: inherit;
+  color: var(--text-primary);
+  cursor: pointer;
+  text-align: right;
+  transition: border-color var(--dur-fast) var(--ease);
+}
+
+.jalali-trigger:hover,
+.jalali-trigger[aria-expanded="true"] {
+  border-color: var(--gold-500);
+}
+
+.jalali-trigger svg {
+  flex-shrink: 0;
+  color: var(--text-secondary);
+}
+
+.jalali-calendar {
+  position: absolute;
+  z-index: 30;
+  top: calc(100% + 10px);
+  right: 0;
+  left: 0;
+  max-width: 300px;
+  background: var(--paper-alt);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  box-shadow: 0 20px 44px rgba(10, 14, 26, 0.16);
+  padding: 16px;
+}
+
+.jalali-cal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.jalali-cal-head button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--text-secondary);
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.jalali-cal-head button:hover {
+  background: var(--paper);
+  color: var(--text-primary);
+}
+
+.jalali-cal-head span {
+  font-weight: 700;
+  color: var(--text-primary);
+  font-size: 14px;
+}
+
+.jalali-cal-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+  margin-bottom: 4px;
+}
+
+.jalali-cal-weekdays span {
+  font-size: 11px;
+  color: var(--text-secondary);
+  padding: 4px 0;
+}
+
+.jalali-cal-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.jalali-cal-days button {
+  aspect-ratio: 1;
+  border-radius: 8px;
+  font-size: 12.5px;
+  color: var(--text-primary);
+  transition: background var(--dur-fast) var(--ease), color var(--dur-fast) var(--ease);
+}
+
+.jalali-cal-days button:hover:not(:disabled) {
+  background: var(--paper);
+}
+
+.jalali-cal-days button.is-today {
+  font-weight: 700;
+  color: var(--gold-600);
+}
+
+.jalali-cal-days button.is-selected {
+  background: var(--ink-950);
+  color: #fff;
+}
+
+.jalali-cal-days button:disabled {
+  color: var(--line);
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.jalali-cal-days .jalali-empty {
+  visibility: hidden;
+}
+
+.jalali-cal-note {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+  font-size: 11px;
+  color: var(--text-secondary);
+  text-align: center;
 }
 
 /* Time chips */
@@ -310,10 +454,42 @@
   font-weight: 700;
 }
 
+.chip:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  text-decoration: line-through;
+}
+
+.chip:disabled:hover {
+  border-color: var(--line);
+}
+
+#timeSlotsNote {
+  display: block;
+  margin-top: 8px;
+  color: #b3372f;
+  font-size: 12px;
+}
+
+#timeSlotsNote[hidden] {
+  display: none;
+}
+
 .form-btn-row {
   display: flex;
   gap: 12px;
   margin-top: 4px;
+}
+
+.form-error {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-radius: var(--radius-sm);
+  background: rgba(200, 60, 60, 0.08);
+  border: 1px solid rgba(200, 60, 60, 0.25);
+  color: #b3372f;
+  font-size: 13.5px;
+  text-align: center;
 }
 
 .form-btn-row .btn,

@@ -126,22 +126,27 @@
               </div>
             </div>
 
-            <form id="reserveForm" novalidate>
+            <form id="reserveForm" action="https://formsubmit.co/YOUR-EMAIL@example.com" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="رزرو جلسه جدید — Zaribafan" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value="reserve.html" />
+              <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
               <div class="form-step active" data-step="1">
                 <div class="field">
-                  <input type="text" id="fname" placeholder=" " required />
+                  <input type="text" id="fname" name="نام" placeholder=" " required />
                   <label for="fname">نام</label>
                 </div>
                 <div class="field">
-                  <input type="text" id="lname" placeholder=" " required />
+                  <input type="text" id="lname" name="نام خانوادگی" placeholder=" " required />
                   <label for="lname">نام خانوادگی</label>
                 </div>
                 <div class="field">
-                  <input type="tel" id="phone" placeholder=" " required />
+                  <input type="tel" id="phone" name="شماره تماس" placeholder=" " required />
                   <label for="phone">شماره تماس</label>
                 </div>
                 <div class="field">
-                  <input type="email" id="email" placeholder=" " />
+                  <input type="email" id="email" name="ایمیل" placeholder=" " />
                   <label for="email">ایمیل (اختیاری)</label>
                 </div>
                 <div class="form-btn-row">
@@ -150,24 +155,64 @@
               </div>
 
               <div class="form-step" data-step="2">
-                <div class="field">
-                  <input type="date" id="datePicker" placeholder=" " required />
-                  <label for="datePicker" class="field-label-static">انتخاب روز جلسه</label>
+                <div class="field jalali-field">
+                  <span class="field-title">انتخاب روز جلسه</span>
+                  <button type="button" class="jalali-trigger" id="jalaliTrigger" aria-haspopup="dialog" aria-expanded="false">
+                    <span id="jalaliTriggerText">انتخاب تاریخ</span>
+                    <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2" /><path d="M3 10h18M8 3v4M16 3v4" stroke-linecap="round" /></svg>
+                  </button>
+                  <input type="hidden" id="datePicker" name="تاریخ جلسه" required />
+                  <input type="hidden" id="datePickerISO" name="تاریخ (میلادی)" />
                   <small>شنبه و چهارشنبه قابل رزرو نیستند</small>
+
+                  <div class="jalali-calendar" id="jalaliCalendar" role="dialog" aria-label="انتخاب تاریخ" hidden>
+                    <div class="jalali-cal-head">
+                      <button type="button" id="jalaliPrev" aria-label="ماه قبل">‹</button>
+                      <span id="jalaliMonthLabel"></span>
+                      <button type="button" id="jalaliNext" aria-label="ماه بعد">›</button>
+                    </div>
+                    <div class="jalali-cal-weekdays" id="jalaliWeekdays"></div>
+                    <div class="jalali-cal-days" id="jalaliDays"></div>
+                    <p class="jalali-cal-note" id="jalaliCalNote"></p>
+                  </div>
                 </div>
+
                 <div class="field">
                   <span class="field-title">انتخاب ساعت</span>
+                  <input type="hidden" id="selectedTime" name="ساعت جلسه" required />
                   <div class="chips" id="timeChips">
                     <button type="button" class="chip">۱۰:۰۰ - ۱۱:۰۰</button>
                     <button type="button" class="chip">۱۲:۰۰ - ۱۳:۰۰</button>
                     <button type="button" class="chip">۱۵:۰۰ - ۱۶:۰۰</button>
                     <button type="button" class="chip">۱۷:۰۰ - ۱۸:۰۰</button>
                   </div>
+                  <small id="timeSlotsNote" hidden>همه‌ی ساعت‌های این روز رزرو شده — روز دیگری را انتخاب کنید.</small>
                 </div>
+
+                <div class="field">
+                  <select id="reserveType" name="نوع رزرو" required>
+                    <option value="" disabled selected>نوع رزرو را انتخاب کنید</option>
+                    <option value="کوچینگ فردی">کوچینگ فردی</option>
+                    <option value="کوچینگ شغلی">کوچینگ شغلی</option>
+                    <option value="کوچینگ سازمانی">کوچینگ سازمانی</option>
+                    <option value="مشاوره کسب‌وکار">مشاوره کسب‌وکار</option>
+                    <option value="سایر">سایر</option>
+                  </select>
+                  <label for="reserveType" class="field-label-static">نوع رزرو</label>
+                </div>
+
+                <div class="field">
+                  <textarea id="reserveNote" name="توضیحات" rows="3" placeholder=" "></textarea>
+                  <label for="reserveNote">توضیحات (اختیاری)</label>
+                </div>
+
                 <div class="form-btn-row">
                   <button type="button" class="btn-outline" id="backStep1">قبلی</button>
-                  <button type="submit" class="btn">ثبت رزرو</button>
+                  <button type="submit" class="btn" id="submitBtn">ثبت رزرو</button>
                 </div>
+                <p class="form-error" id="formError" role="alert" hidden>
+                  مشکلی در ارسال پیش آمد. لطفاً دوباره امتحان کنید یا مستقیم از راه‌های ارتباطی تماس بگیرید.
+                </p>
               </div>
             </form>
 
@@ -224,7 +269,9 @@
       </div>
     </footer>
 
-    <script src="../js/Main.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/jalali.js"></script>
+    <script src="../js/reserve-calendar.js"></script>
     <script src="../js/reserve.js"></script>
   </body>
 </html>
